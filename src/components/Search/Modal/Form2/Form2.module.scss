@@ -1,0 +1,72 @@
+@import "./../../../../styles/variables.module";
+
+.form_container{
+    background-color: $themeColor;
+    padding: 10px;
+    & table td {
+        font-size: 12px;
+    }
+    
+}
+.form{
+    background-color: rgb(107, 113, 189);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    
+}
+.content {
+    
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // display: inline-block;
+    background-color:#af1414;
+    font-size: $fontSize;
+    // width: 100%;
+    color: rgb(230, 221, 207);
+    border-radius: 15px;
+    margin: 10px;
+}
+.input{
+    display: block;
+}
+
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    color: #fff;
+    position: relative;
+}
+
+input[type="date"]::-webkit-datetime-edit-year-field {
+    position: absolute !important;
+    border-left: 1px solid #8c8c8c;
+    padding: 2px;
+    color: #000;
+    left: 56px;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field {
+    position: absolute !important;
+    border-left: 1px solid #8c8c8c;
+    padding: 2px;
+    color: #000;
+    left: 26px;
+}
+
+
+input[type="date"]::-webkit-datetime-edit-day-field {
+    position: absolute !important;
+    color: #000;
+    padding: 2px;
+    left: 4px;
+
+}
+
+
+.hidden_div{
+        display: none;
+    }

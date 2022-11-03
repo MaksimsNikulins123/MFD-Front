@@ -1,0 +1,47 @@
+@import "./../../../../../../styles/variables.module";
+
+.container {
+    background: #35d477;
+    border-radius: $borderRadius;
+    color: #0d0363;
+}
+.content{
+    margin: 10px;
+}
+
+.table {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.itemTitle{
+    width: 20%;
+    text-align: center;
+}
+.content li {
+    display: flex;
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    padding: $componentPadding;
+    & .listItemTitle{
+        width: 20%;        
+        & .buttons{
+            display: flex;
+            justify-content: space-around;         
+            & .buttonHide{
+                width: 48%;
+                border-radius: 10px;
+                color: rgba(179, 190, 149, 0.664);
+                background-color: #23241f;  
+            }
+            & .buttonDelete{
+                width: 48%;
+                border-radius: 10px;
+                color: rgba(224, 191, 186, 0.664);
+                background-color: #f1310f;
+            }
+        } 
+    }
+}

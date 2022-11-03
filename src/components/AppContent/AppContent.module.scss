@@ -1,0 +1,17 @@
+@import "./../../styles/variables.module";
+
+.container {
+    background: $componentBackgroundColor;
+    color: $fontColor;
+    width: 100vw;
+    height: 100vh;
+    padding: $componentPadding;
+    display: $componentDisplay;
+    justify-content: center;
+    border-radius: $borderRadius;
+    
+}
+.content{
+    padding: $componentPadding;
+    width: 80vw;
+}

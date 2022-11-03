@@ -1,0 +1,23 @@
+@import "./../../../styles/variables.module";
+
+.container {
+    // background: #e2dddd;
+    // border-radius: $borderRadius;
+    // padding: $componentPadding;
+    margin: 20px;  
+}
+.content{
+        display: flex;
+        justify-content:center;
+        align-items:center;
+    & button{
+        // background: #10bedd;
+        // border-radius: 25px;
+        // line-height: 25px;
+        // font-size: 25px;
+        // // display: flex;
+        // // justify-content:center;
+        // // align-items:center;
+        // padding: 10px;
+    }
+}

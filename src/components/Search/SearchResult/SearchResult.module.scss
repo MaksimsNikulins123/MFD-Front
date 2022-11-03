@@ -1,0 +1,38 @@
+@import "./../../../styles/variables.module";
+
+.button {
+    margin: 5px;
+
+    @media (max-width: 767px) {
+        font-size: 6px;
+        margin: 0;
+    }
+}
+
+.result{
+    padding: 10px;
+}
+
+.result li {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.result  td, th{
+    padding: 10px; 
+    width:20%;
+    text-align: center;
+    // &:last-child button{
+        // margin: 0 auto;
+        // align-self: center;
+        // display: flex;
+        // justify-content: center;
+        
+    // }
+    @media (max-width: 767px) {
+        padding: 5px;
+        font-size: 8px;
+       
+    }
+}

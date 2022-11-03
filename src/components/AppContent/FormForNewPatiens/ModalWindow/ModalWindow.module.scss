@@ -1,0 +1,45 @@
+@import "./../../../../styles/variables.module";
+
+.container {
+    background: #ac1111;
+    // border-radius: $borderRadius;
+    // color: #0d0363;
+    // padding: $componentPadding;
+    margin: 20px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // flex-direction: column;
+    //     justify-content: center;
+        // align-items:center;
+    // padding: 10px;
+    // background: #10bedd;
+    // color: $fontColor;
+    // width: $componentWidth;
+    // height: $componentHeight;
+    // display: $componentDisplay;
+    // align-items: $componentAlignItems;
+    // justify-content: $componentJustifyContent;
+    
+}
+.content{
+    background: #ac1111;
+//         display: flex;
+//         justify-content:center;
+//         align-items:center;
+//         text-align: center;
+    // background: $componentBackgroundColor;
+//     // margin: $componentMargin;
+//     // width: $componentWidth;
+//     // height: $componentHeight;
+//     // border-radius: 25px;
+//     & button{
+//         background: #10bedd;
+//         border-radius: 25px;
+//         line-height: 25px;
+//         font-size: 25px;
+//         // display: flex;
+//         // justify-content:center;
+//         // align-items:center;
+//         padding: 10px;
+//     }
+}
