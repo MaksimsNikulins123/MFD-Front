@@ -14,10 +14,8 @@ const SearchPatients = (props) => {
                 </div>
          
                 < SearchInput 
-                search={props.search}
+                searching={props.search.searching}
                 dispatch={props.dispatch}
-                // checkIsInputNumber={props.search.checkIsInputNumber}
-                // handleSearchInput={props.search.handleSearchInput}
                 />
                 {
                 props.search.searching.length > 2 

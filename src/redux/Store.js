@@ -1,9 +1,15 @@
+const CHECK_IS_INPUT_NUMBER = "CHECK-IS-INPUT-NUMBER";
+const HANDLE_INPUT_VALUE = "HANDLE-INPUT-VALUE";
+const GET_DATA_FROM_SERVER = "GET-DATA-FROM-SERVER";
+
+
 let Store = {
     _state: {
         search: {
             response: false,
             searching: "",
-            searchResult: [{
+            searchResult: [
+                {
                     id: 1,
                     created_at: "12.09.2022",
                     personal_code: "123456-12345",
@@ -39,48 +45,42 @@ let Store = {
     },
     
     Subscribe(rerenderFunction) {
+     
         this.Rerender = rerenderFunction;
     },
+  
+    Dispatch(action, e) 
+    {
 
-    Dispatch(action) {
-        debugger
-        let input = action.key;
-        console.log(input);
-        if(action.type === "CHECK-IS-INPUT-NUMBER")
+        if(action.type === CHECK_IS_INPUT_NUMBER)
         {
-            // let input = String.fromCharCode(e.which);
-            // let input = String.fromCharCode(action.key);
-            let input = action.key;
+            let input = action.inputValue;
 
             if (!(/[0-9 -]/.test(input))) {
-                // e.preventDefault();
-                action.preventDefault();
-                console.log(input);
+                e.preventDefault();
+            } 
+           
+        }
+        else if(action.type === HANDLE_INPUT_VALUE)
+            {
+                let inputValue = action.inputValue;
+                this.getState().search.searching = inputValue;
+                
+                if(this.getState().search.searching.length >2)
+                {
+                    this.getState().search.response = true;
+                    setTimeout(() => {
+                        this.getState().search.response = false;
+                        console.log("Sending request to server")
+                        this.Rerender(this.getState());
+                    }, 3000);
+                }
+            this.Rerender(this.getState());  
             }
-        }
-    },
-    CheckIsInputNumber(e) {
-        let input = String.fromCharCode(e.which);
-
-        if (!(/[0-9 -]/.test(input))) {
-            e.preventDefault();
-        }
-        
     },
     HandleSearchInput(e) {
-        // debugger
         let inputValue = e.target.value;
-        console.log(inputValue);
         this.getState.search.searching = inputValue;
-
-        // if (this._state.search.searching.length > 2) {
-        //     this._state.search.response = true;
-        //     setTimeout(() => {
-        //         this._state.search.response = false;
-        //         this.Rerender(this._state)
-        //     }, 3000);
-        // }
-        // this.Rerender(this._state);
     },
     // HandleButtonClick() {
     //     State.form.buttonClick = !State.form.buttonClick;
@@ -121,5 +121,17 @@ let Store = {
 
 }
 
+export const CheckIsInputNumberActionCreator = (inputValue) => {
+    return {
+        type: CHECK_IS_INPUT_NUMBER,
+        inputValue: inputValue
+    }
+}
+export const HandleInputValueActionCreator = (inputValue) => {
+    return {
+        type: HANDLE_INPUT_VALUE,
+        inputValue: inputValue
+    }
+}
 
 export default Store;
