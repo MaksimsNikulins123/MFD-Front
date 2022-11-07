@@ -5,6 +5,7 @@ import ModalWindow from './ModalWindow/ModalWindow';
 
 const FormForNewPatients = (props) => {
 
+
     return(
         <div className={styles.container}>
             <div className={styles.content}>
@@ -12,11 +13,15 @@ const FormForNewPatients = (props) => {
                 props.form.buttonClick 
                     ?
                 <ModalWindow 
-                    form={props.form}/>
+                    form={props.form}
+                    dispatch={props.dispatch}
+                    />
                     :
-                <Button 
-                    handleButtonClick={props.form.handleButtonClick}
-                    setFirstModalWindowActive={props.form.setFirstModalWindowActive}
+                <Button
+                    // form={props.form} 
+                    dispatch={props.dispatch}
+                    // handleButtonClick={handleButtonClick}
+                    // setFirstModalWindowActive={props.form.setFirstModalWindowActive}
                     />
                 }           
             </div>        

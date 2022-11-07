@@ -13,6 +13,7 @@ const AppContent = (props) => {
                 />}
                 {<FormForNewPatients 
                 form={props.state.form}
+                dispatch={props.dispatch}
                 />}
             </div>   
         </div>

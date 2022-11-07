@@ -6,11 +6,11 @@ import styles from './SearchInput.module.scss';
 
 const SearchInput = (props) => {
 
-    let checkIsInputNumber = (e) => {
+    const checkIsInputNumber = (e) => {
         let inputValue = e.key;
         props.dispatch(CheckIsInputNumberActionCreator(inputValue), e);
     }
-    let handleSearchInput = (e) => {
+    const handleSearchInput = (e) => {
         let inputValue = e.target.value;
         props.dispatch(HandleInputValueActionCreator(inputValue));
     }

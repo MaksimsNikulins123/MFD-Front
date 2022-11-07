@@ -8,14 +8,17 @@ const ModalWindow = (props) => {
  return(
         <>
             {
-                props.form.buttonClick && props.form.modalWindowFirstActive
-                    ?
-                    <ModalWindowFirst 
-                    form={props.form}
+            props.form.buttonClick && props.form.modalWindowFirstActive
+                ?
+                <ModalWindowFirst 
+                form={props.form}
+                dispatch={props.dispatch}
                 />
                 :
                 <ModalWindowSecond 
-                form={props.form}/>
+                form={props.form}
+                dispatch={props.dispatch}
+                />
             }
         </>
  )
