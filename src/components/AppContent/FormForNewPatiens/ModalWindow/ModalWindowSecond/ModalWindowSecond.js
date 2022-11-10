@@ -1,16 +1,49 @@
+import {SaveFormDataActionCreator, 
+    ToggleButtonVisibilityActionCreator, 
+    ToggleFirstModalWindowActivityActionCreator, 
+    ToggleSecondModalWindowActivityActionCreator, } from '../../../../../redux/form-reducer';
 import styles from './ModalWindowSecond.module.scss';
 
 const ModalWindowSecond = (props) => {
 
+    const cancelSecondModalWindowActive = () => {
+        props.dispatch(ToggleButtonVisibilityActionCreator())
+        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
+    }
+    const backToFirstModalWindow = () => {
+        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
+        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
+    }
+
+    const saveFormData = () => {
+        props.dispatch(SaveFormDataActionCreator())
+    }
+
     return(
-        <div className={props.form.modalWindowSecondActive ? styles.container_active : styles.container } onClick={() => {props.form.setSecondModalWindowActive(); props.form.handleButtonClick()}}>
+        <div className={
+            props.form.modalWindowSecondActive 
+            ? 
+            styles.container_active 
+            : 
+            styles.container 
+            } 
+            onClick={() => {
+                cancelSecondModalWindowActive();
+                }}>
         
             <div  className={styles.content} onClick={(e) => {e.stopPropagation()}}>
-                <button onClick={() => {props.form.setSecondModalWindowActive(); props.form.handleButtonClick()}}>X</button>
+                <button onClick={() => {
+                   cancelSecondModalWindowActive();
+                    }}>X</button>
                     form2
                 
-                <button onClick={() => {props.form.setFirstModalWindowActive(); props.form.setSecondModalWindowActive()}}>back</button>
-                <button onClick={()=>{props.form.saveFormData(); props.form.setSecondModalWindowActive(); props.form.handleButtonClick()}}>save</button>
+                <button onClick={() => {
+                    backToFirstModalWindow();
+                    }}>back</button>
+                <button onClick={()=>{
+                    saveFormData();
+                    cancelSecondModalWindowActive();
+                    }}>save</button>
             </div>   
         </div>
     )

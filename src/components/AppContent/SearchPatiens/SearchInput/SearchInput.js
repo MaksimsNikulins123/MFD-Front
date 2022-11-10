@@ -1,7 +1,7 @@
 import { 
     CheckIsInputNumberActionCreator, 
     HandleInputValueActionCreator 
-} from '../../../../redux/Store';
+} from '../../../../redux/search-reducer';
 import styles from './SearchInput.module.scss';
 
 const SearchInput = (props) => {

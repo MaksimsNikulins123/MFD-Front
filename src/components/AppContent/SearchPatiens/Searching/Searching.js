@@ -9,11 +9,11 @@ const Searching = (props) => {
                 {
                 props.response 
                     ? 
-                <Preloader /> 
-                    : 
                 <SearchingResult 
-                    searchResult={props.searchResult}
-                /> 
+                searchResult={props.searchResult}
+                />
+                    : 
+                <Preloader /> 
                 }
             </>
     )

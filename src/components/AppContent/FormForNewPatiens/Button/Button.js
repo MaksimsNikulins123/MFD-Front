@@ -1,12 +1,14 @@
-import { ToggleFirstModalWindowActiveOnButtonClickActionCreator } from '../../../../redux/Store';
+import {  
+    ToggleButtonVisibilityActionCreator, 
+    ToggleFirstModalWindowActivityActionCreator} from '../../../../redux/form-reducer';
 import styles from './Button.module.scss';
 
 const Button = (props) => {
 
     
     const toggleFirstModalWindowOnButtonClick = () => {
-     
-            props.dispatch(ToggleFirstModalWindowActiveOnButtonClickActionCreator());
+            props.dispatch(ToggleButtonVisibilityActionCreator())
+            props.dispatch(ToggleFirstModalWindowActivityActionCreator());
         
     }
 

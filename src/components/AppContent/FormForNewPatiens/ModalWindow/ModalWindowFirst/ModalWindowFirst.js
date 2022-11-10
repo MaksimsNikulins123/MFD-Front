@@ -1,6 +1,8 @@
-import {HandleFirstModalWindowInputValueActionCreator, 
-    ToggleFirstModalWindowActiveOnButtonClickActionCreator, 
-    ToggleSecondModalWindowActiveOnButtonClickActionCreator } from '../../../../../redux/Store';
+import {HandleFirstModalWindowInputValueActionCreator,    
+    ToggleButtonVisibilityActionCreator,   
+    ToggleFirstModalWindowActivityActionCreator, 
+    ToggleSecondModalWindowActivityActionCreator, 
+    } from '../../../../../redux/form-reducer';
 import styles from './ModalWindowFirst.module.scss';
 // import { useState } from 'react';
 
@@ -10,15 +12,16 @@ import styles from './ModalWindowFirst.module.scss';
 const ModalWindowFirst = (props) => {
 
     const cancelFirstModalWindowActive = () => {  
-      
-        props.dispatch(ToggleFirstModalWindowActiveOnButtonClickActionCreator());
+        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
+        props.dispatch(ToggleButtonVisibilityActionCreator());
     }
     const handleInputValue = (e) => {
         let inputValue = e.target.value;
         props.dispatch(HandleFirstModalWindowInputValueActionCreator(inputValue))
     }
     const toggleSecondModalWindowActive = () => {
-        props.dispatch(ToggleSecondModalWindowActiveOnButtonClickActionCreator())
+        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
+        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
     }
     return(
                 <div className={
@@ -30,7 +33,6 @@ const ModalWindowFirst = (props) => {
                     } 
                     onClick={() => {
                         cancelFirstModalWindowActive(); 
-                        // props.form.handleButtonClick() 
                         }}>
         
                  <div  className={styles.content} onClick={(e) => {e.stopPropagation()}}>
