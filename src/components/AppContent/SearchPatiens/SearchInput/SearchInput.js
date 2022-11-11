@@ -1,19 +1,6 @@
-import { 
-    CheckIsInputNumberActionCreator, 
-    HandleInputValueActionCreator 
-} from '../../../../redux/search-reducer';
 import styles from './SearchInput.module.scss';
 
 const SearchInput = (props) => {
-
-    const checkIsInputNumber = (e) => {
-        let inputValue = e.key;
-        props.dispatch(CheckIsInputNumberActionCreator(inputValue), e);
-    }
-    const handleSearchInput = (e) => {
-        let inputValue = e.target.value;
-        props.dispatch(HandleInputValueActionCreator(inputValue));
-    }
 
     return(
         <div className={styles.container}>
@@ -23,11 +10,8 @@ const SearchInput = (props) => {
                 type="text" 
                 name="searching" 
                 maxLength="12" 
-                // onKeyPress={props.checkIsInputNumber} 
-                onKeyPress={checkIsInputNumber} 
-                // onKeyPress={props.dispatch} 
-                onChange={handleSearchInput}
-                // onChange={props.dispatch}
+                onKeyPress={props.checkIsInputNumber} 
+                onChange={props.handleSearchInput}
                 value={props.searching}
                 />
             </div>

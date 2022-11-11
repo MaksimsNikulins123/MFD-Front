@@ -1,5 +1,6 @@
-import styles from './ModalWindow.module.scss';
-import ModalWindowFirst from './ModalWindowFirst/ModalWindowFirst';
+// import styles from './ModalWindow.module.scss';
+// import ModalWindowFirst from './ModalWindowFirst/ModalWindowFirst';
+import ModalWindowFirstContainer from './ModalWindowFirst/ModalWindowFirstContainer';
 import ModalWindowSecond from './ModalWindowSecond/ModalWindowSecond';
 
 const ModalWindow = (props) => {
@@ -10,7 +11,7 @@ const ModalWindow = (props) => {
             {
             props.form.buttonClick && props.form.modalWindowFirstActive
                 ?
-                <ModalWindowFirst 
+                <ModalWindowFirstContainer 
                 form={props.form}
                 dispatch={props.dispatch}
                 />

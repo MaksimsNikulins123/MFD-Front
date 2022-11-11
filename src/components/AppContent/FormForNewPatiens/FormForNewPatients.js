@@ -1,4 +1,5 @@
-import Button from './Button/Button';
+// import Button from './Button/Button';
+import ButtonContainer from './Button/ButtonContainer';
 import styles from './FormForNewPatients.module.scss';
 import ModalWindow from './ModalWindow/ModalWindow';
 
@@ -17,7 +18,7 @@ const FormForNewPatients = (props) => {
                     dispatch={props.dispatch}
                     />
                     :
-                <Button
+                <ButtonContainer
                     // form={props.form} 
                     dispatch={props.dispatch}
                     // handleButtonClick={handleButtonClick}

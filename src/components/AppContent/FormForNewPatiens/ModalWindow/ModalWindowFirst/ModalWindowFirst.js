@@ -11,46 +11,46 @@ import styles from './ModalWindowFirst.module.scss';
 
 const ModalWindowFirst = (props) => {
 
-    const cancelFirstModalWindowActive = () => {  
-        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
-        props.dispatch(ToggleButtonVisibilityActionCreator());
-    }
-    const handleInputValue = (e) => {
-        let inputValue = e.target.value;
-        props.dispatch(HandleFirstModalWindowInputValueActionCreator(inputValue))
-    }
-    const toggleSecondModalWindowActive = () => {
-        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
-        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
-    }
+    // const cancelFirstModalWindowActive = () => {  
+    //     props.dispatch(ToggleFirstModalWindowActivityActionCreator());
+    //     props.dispatch(ToggleButtonVisibilityActionCreator());
+    // }
+    // const handleInputValue = (e) => {
+    //     let inputValue = e.target.value;
+    //     props.dispatch(HandleFirstModalWindowInputValueActionCreator(inputValue))
+    // }
+    // const toggleSecondModalWindowActive = () => {
+    //     props.dispatch(ToggleFirstModalWindowActivityActionCreator());
+    //     props.dispatch(ToggleSecondModalWindowActivityActionCreator())
+    // }
     return(
                 <div className={
-                    props.form.modalWindowFirstActive 
+                    props.modalWindowFirstActive 
                     ? 
                     styles.container_active 
                     : 
                     styles.container 
                     } 
                     onClick={() => {
-                        cancelFirstModalWindowActive(); 
+                        props.cancelFirstModalWindowActive(); 
                         }}>
         
                  <div  className={styles.content} onClick={(e) => {e.stopPropagation()}}>
                     <button onClick={() => {
-                        cancelFirstModalWindowActive();
+                        props.cancelFirstModalWindowActive();
                         }}>X</button>
                         form1
                     <input 
                         type="text" 
                         name="input" 
-                        onChange={handleInputValue} 
-                        value={props.form.inputValue}/>
+                        onChange={props.handleInputValue} 
+                        value={props.inputValue}/>
                     
                 <button onClick={() => {
-                    toggleSecondModalWindowActive();
+                    props.toggleSecondModalWindowActive();
                     }}>next</button>
                 <button onClick={() => {
-                    cancelFirstModalWindowActive(); 
+                    props.cancelFirstModalWindowActive(); 
                     }}>cancel</button>
             </div>  
             
@@ -59,5 +59,5 @@ const ModalWindowFirst = (props) => {
     )
 }
 
-export default ModalWindowFirst
+export default ModalWindowFirst;
 

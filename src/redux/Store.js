@@ -40,20 +40,21 @@ let Store = {
     getState() {
         return this._state;
     },
-    Rerender() {
+    rerender() {
         console.log("state changed");
     },
-    Subscribe(rerenderFunction) {
-        this.Rerender = rerenderFunction;
+    subscribe(rerenderFunction) {
+        this.rerender = rerenderFunction;
     },
-    Dispatch(action, e)   
+    dispatch(action, e)   
     {
         this.getState().search = searchReducer(this.getState().search, action, e);
+
         this.getState().form = formReducer(this.getState().form, action)
-        this.Rerender(this.getState());
+        this.rerender(this.getState());
     },
-    Subscribe(observer) {
-        this.Rerender = observer;
+    subscribe(observer) {
+        this.rerender = observer;
     },
 }
 

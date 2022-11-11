@@ -1,6 +1,7 @@
 import Default from './Default/Default';
 import Searching from './Searching/Searching';
-import SearchInput from './SearchInput/SearchInput';
+// import SearchInput from './SearchInput/SearchInput';
+import SearchInputContainer from './SearchInput/SearchInputContainer';
 import styles from './SearchPatients.module.scss';
 
 const SearchPatients = (props) => {
@@ -13,7 +14,7 @@ const SearchPatients = (props) => {
                     <h2><span>Searching patients by personal code</span></h2>
                 </div>
          
-                < SearchInput 
+                < SearchInputContainer
                 searching={props.search.searching}
                 dispatch={props.dispatch}
                 />
