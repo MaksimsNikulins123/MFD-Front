@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux'
 
 
 // let Rerender = (state) => {
@@ -14,12 +15,14 @@ let rerender = (state) => {
   // debugger
     ReactDOM.render(
       <React.StrictMode>
+        <Provider store={store}>
           <App 
           state={state}
           // dispatch={Store.Dispatch.bind(Store)}
           dispatch={store.dispatch.bind(store)}
           // checkIsInputNumber={Store.CheckIsInputNumber.bind(Store)}
           />
+        </Provider>
       </React.StrictMode>,
       document.getElementById('root')
     );
