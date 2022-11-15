@@ -1,53 +1,36 @@
-import {SaveFormDataActionCreator, 
-    ToggleButtonVisibilityActionCreator, 
-    ToggleFirstModalWindowActivityActionCreator, 
-    ToggleSecondModalWindowActivityActionCreator, } from '../../../../../redux/form-reducer';
 import styles from './ModalWindowSecond.module.scss';
 
 const ModalWindowSecond = (props) => {
 
-    const cancelSecondModalWindowActive = () => {
-        props.dispatch(ToggleButtonVisibilityActionCreator())
-        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
-    }
-    const backToFirstModalWindow = () => {
-        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
-        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
-    }
-
-    const saveFormData = () => {
-        props.dispatch(SaveFormDataActionCreator())
-    }
-
     return(
         <div className={
-            props.form.modalWindowSecondActive 
+            props.modalWindowSecondActive 
             ? 
             styles.container_active 
             : 
             styles.container 
             } 
             onClick={() => {
-                cancelSecondModalWindowActive();
+                props.cancelSecondModalWindowActive();
                 }}>
         
             <div  className={styles.content} onClick={(e) => {e.stopPropagation()}}>
                 <button onClick={() => {
-                   cancelSecondModalWindowActive();
+                   props.cancelSecondModalWindowActive();
                     }}>X</button>
                     form2
                 
                 <button onClick={() => {
-                    backToFirstModalWindow();
+                    props.backToFirstModalWindow();
                     }}>back</button>
                 <button onClick={()=>{
-                    saveFormData();
-                    cancelSecondModalWindowActive();
+                    props.saveFormData();
+                    props.cancelSecondModalWindowActive();
                     }}>save</button>
             </div>   
         </div>
     )
 }
 
-export default ModalWindowSecond
+export default ModalWindowSecond;
 
