@@ -1,9 +1,7 @@
-// import Found from './Found/Found';
-// import NotFound from './NotFound/NotFound';
 import styles from './Default.module.scss';
 
 
-const Default = (props) => {
+const Default = () => {
 
     return(
         <div className={styles.container}>

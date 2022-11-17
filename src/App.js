@@ -14,9 +14,9 @@ function App(props) {
       {/* <Search /> */}
   
       {<AppContent 
-        state={props.state}
+        // state={props.state}
         // checkIsInputNumber={props.checkIsInputNumber}
-          dispatch={props.dispatch}
+          // dispatch={props.dispatch}
         />}
       {/* {<SearchPatients />}
       {<FormForNewPatients />}    */}

@@ -1,7 +1,6 @@
 // import State from './redux/State';
 // import Store from './redux/Store';
 import store from './redux/redux-store';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -11,15 +10,16 @@ import { Provider } from 'react-redux'
 
 
 // let Rerender = (state) => {
-let rerender = (state) => {
-  // debugger
+// let rerender = (state) => {
+let rerender = () => {
+  debugger
     ReactDOM.render(
       <React.StrictMode>
         <Provider store={store}>
           <App 
-          state={state}
+          // state={state}
           // dispatch={Store.Dispatch.bind(Store)}
-          dispatch={store.dispatch.bind(store)}
+          // dispatch={store.dispatch.bind(store)}
           // checkIsInputNumber={Store.CheckIsInputNumber.bind(Store)}
           />
         </Provider>
@@ -30,7 +30,8 @@ let rerender = (state) => {
   }
 // console.log(Store1)
 // Rerender(State);
-rerender(store.getState());
+// rerender(store.getState());
+rerender();
 
 // State.subscribe(Rerender)
 // Store.Subscribe(Rerender)
@@ -39,4 +40,5 @@ rerender(store.getState());
 //   let state = store.getState();
 //   rerender(state);
 // })
-store.subscribe(() => rerender(store.getState()))
+// store.subscribe(() => rerender(store.getState()))
+store.subscribe(() => rerender())

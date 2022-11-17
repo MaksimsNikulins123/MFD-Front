@@ -1,5 +1,6 @@
 import Default from './Default/Default';
-import Searching from './Searching/Searching';
+// import Searching from './Searching/Searching';
+import SearchingContainer from './Searching/SearchingContainer';
 // import SearchInput from './SearchInput/SearchInput';
 import SearchInputContainer from './SearchInput/SearchInputContainer';
 import styles from './SearchPatients.module.scss';
@@ -15,15 +16,15 @@ const SearchPatients = (props) => {
                 </div>
          
                 < SearchInputContainer
-                searching={props.search.searching}
-                dispatch={props.dispatch}
+                // searching={props.searching}
+                // dispatch={props.dispatch}
                 />
                 {
-                props.search.searching.length > 2 
+                props.searching.length > 2 
                     ? 
-                <Searching 
-                    response={props.search.response}
-                    searchResult={props.search.searchResult}
+                <SearchingContainer
+                    // response={props.response}
+                    // searchResult={props.searchResult}
                 />  
                     :  
                 <Default />

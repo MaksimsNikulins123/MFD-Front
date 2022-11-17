@@ -10,7 +10,7 @@ const Searching = (props) => {
                 props.response 
                     ? 
                 <SearchingResult 
-                searchResult={props.searchResult}
+                // searchResult={props.searchResult}
                 />
                     : 
                 <Preloader /> 

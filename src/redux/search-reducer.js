@@ -34,8 +34,15 @@ const searchReducer = (state = initialState, action, e) => {
 
 switch(action.type){
     case HANDLE_INPUT_VALUE:
+        debugger
         let inputValue = action.inputValue;
-            state.searching = inputValue;
+        state.searching = inputValue;
+        let newState = state;
+        newState.searching = inputValue;
+        // let newStateSearch = {...newState.search};
+        // let newStateSearchSearching = {...newStateSearch.searching}
+        //     newStateSearchSearching = inputValue;
+
             if(state.searching.length >2)
             {
                 console.log("Sending request to server");
@@ -52,7 +59,8 @@ switch(action.type){
                         console.log("Getting response from server");
                         // return state;
                     }, 3000);  
-            }   
+            } 
+            return state; 
     case RERENDER_AFTER_SET_TIME_OUT:
         return state;
     default:
