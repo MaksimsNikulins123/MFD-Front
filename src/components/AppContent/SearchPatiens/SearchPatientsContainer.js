@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import SearchPatients from "./SearchPatients"
 
 const mapStateToProps = (state) => {
-debugger
+// debugger
     return {
         searching: state.search.searching,
         // response: state.search.response,
