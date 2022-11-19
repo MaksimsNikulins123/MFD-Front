@@ -24,7 +24,7 @@ import { connect } from 'react-redux';
 //     )
 // }
 const mapStateToProps = (state) => {
-    debugger
+    // debugger
     return {
         searching: state.search.searching
     }

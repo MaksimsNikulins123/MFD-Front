@@ -1,7 +1,7 @@
 import styles from './SearchInput.module.scss';
 
 const SearchInput = (props) => {
-debugger
+// debugger
     const checkIsInputNumber = (e) => {
                 let input = e.key;
                 if (!(/[0-9 -]/.test(input))) {
@@ -9,7 +9,7 @@ debugger
                 }
             }
     const handleSearchInput = (e) => {
-        let inputValue = e.nativeEvent.data;
+        let inputValue = e.target.value;
             props.handleSearchInput(inputValue)
                 // let inputValue = e.target.value;
                 // props.dispatch(HandleInputValueActionCreator(inputValue));

@@ -12,7 +12,7 @@ import { Provider } from 'react-redux'
 // let Rerender = (state) => {
 // let rerender = (state) => {
 let rerender = () => {
-  debugger
+  // debugger
     ReactDOM.render(
       <React.StrictMode>
         <Provider store={store}>
