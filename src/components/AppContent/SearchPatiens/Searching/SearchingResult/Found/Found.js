@@ -3,6 +3,13 @@ import styles from './Found.module.scss';
 
 const Found = (props) => {
 
+    const hideAction = () => {
+            console.log("hide")  
+        }
+    const deleteAction = () => {
+            console.log("delete")  
+        }
+
     let foundPatientList = props.searchResult.map((patient) => {
         return (
                 <li key={patient.id}>
@@ -20,8 +27,12 @@ const Found = (props) => {
                     </div>
                     <div className={styles.listItemTitle}>
                         <div className={styles.buttons}>
-                            <button className={styles.buttonHide}>Hide</button>
-                            <button className={styles.buttonDelete}>Delete</button>
+                            <button className={styles.buttonHide} onClick={hideAction}>
+                                Hide
+                            </button>
+                            <button className={styles.buttonDelete} onClick={deleteAction}>
+                                Delete
+                            </button>
                         </div> 
                     </div>
                 </li>

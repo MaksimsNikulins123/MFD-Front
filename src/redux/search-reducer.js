@@ -31,20 +31,16 @@ let initialState = {
 }
 const searchReducer = (state = initialState, action, e) => {
 // debugger
+let copyState = {...state};
 
 switch(action.type){
     case HANDLE_INPUT_VALUE:
-        // debugger
-        // let inputValue = action.inputValue;
-        // state.searching = inputValue;
-        let copyState = {...state};
+        let inputValue = action.inputValue;
         copyState.searching = inputValue;
-        // let newStateSearch = {...newState.search};
-        // let newStateSearchSearching = {...newStateSearch.searching}
-        //     newStateSearchSearching = inputValue;
-
-            if(state.searching.length >2)
+        copyState.response = false;
+            if(copyState.searching.length >2)
             {
+                
                 console.log("Sending request to server");
                 // setInterval(
                 //     () => {
@@ -54,15 +50,17 @@ switch(action.type){
                 //     return state;
                 //     }, 3000);
                     setTimeout(() => {
-                        state.response = true;
-                        store.dispatch(rerenderAfterSetTimeOutActionCreator());
+                        copyState.response = true;
+         
                         console.log("Getting response from server");
-                        // return state;
-                    }, 3000);  
+
+                        store.dispatch(rerenderAfterSetTimeOutActionCreator());
+           
+                    }, 3000); 
             } 
             return copyState; 
     case RERENDER_AFTER_SET_TIME_OUT:
-        return state;
+        return copyState;
     default:
         return state;
 }

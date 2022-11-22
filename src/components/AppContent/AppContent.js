@@ -3,15 +3,12 @@ import FormForNewPatients from './FormForNewPatiens/FormForNewPatients';
 import styles from './AppContent.module.scss';
 import SearchPatientsContainer from './SearchPatiens/SearchPatientsContainer';
 
-const AppContent = (props) => {
-// debugger
+const AppContent = () => {
+
     return(
         <div className={styles.container}>
             <div className={styles.content}>
-                {<SearchPatientsContainer
-                // search={props.state.search}
-                // dispatch={props.dispatch}
-                />}
+                {<SearchPatientsContainer />}
                 {/* {<FormForNewPatients 
                 // form={props.state.form}
                 // dispatch={props.dispatch}

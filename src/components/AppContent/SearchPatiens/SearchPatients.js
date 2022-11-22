@@ -15,17 +15,11 @@ const SearchPatients = (props) => {
                     <h2><span>Searching patients by personal code</span></h2>
                 </div>
          
-                < SearchInputContainer
-                // searching={props.searching}
-                // dispatch={props.dispatch}
-                />
+                < SearchInputContainer />
                 {
                 props.searching.length > 2 
                     ? 
-                <SearchingContainer
-                    // response={props.response}
-                    // searchResult={props.searchResult}
-                />  
+                <SearchingContainer />  
                     :  
                 <Default />
                 }            
