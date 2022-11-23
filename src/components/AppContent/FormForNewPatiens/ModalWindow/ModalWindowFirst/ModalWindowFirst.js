@@ -1,28 +1,12 @@
-import {HandleFirstModalWindowInputValueActionCreator,    
-    ToggleButtonVisibilityActionCreator,   
-    ToggleFirstModalWindowActivityActionCreator, 
-    ToggleSecondModalWindowActivityActionCreator, 
-    } from '../../../../../redux/form-reducer';
 import styles from './ModalWindowFirst.module.scss';
-// import { useState } from 'react';
-
-
-
 
 const ModalWindowFirst = (props) => {
 
-    // const cancelFirstModalWindowActive = () => {  
-    //     props.dispatch(ToggleFirstModalWindowActivityActionCreator());
-    //     props.dispatch(ToggleButtonVisibilityActionCreator());
-    // }
-    // const handleInputValue = (e) => {
-    //     let inputValue = e.target.value;
-    //     props.dispatch(HandleFirstModalWindowInputValueActionCreator(inputValue))
-    // }
-    // const toggleSecondModalWindowActive = () => {
-    //     props.dispatch(ToggleFirstModalWindowActivityActionCreator());
-    //     props.dispatch(ToggleSecondModalWindowActivityActionCreator())
-    // }
+    const handleInputValue = (e) => {
+        let inputValue = e.target.value;
+        props.handleInputValue(inputValue)
+    }
+
     return(
                 <div className={
                     props.modalWindowFirstActive 
@@ -43,7 +27,7 @@ const ModalWindowFirst = (props) => {
                     <input 
                         type="text" 
                         name="input" 
-                        onChange={props.handleInputValue} 
+                        onChange={handleInputValue} 
                         value={props.inputValue}/>
                     
                 <button onClick={() => {

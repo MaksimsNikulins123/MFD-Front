@@ -2,22 +2,15 @@ import ModalWindowFirstContainer from './ModalWindowFirst/ModalWindowFirstContai
 import ModalWindowSecondContainer from './ModalWindowSecond/ModalWindowSecondContainer';
 
 const ModalWindow = (props) => {
-
-
+    
  return(
         <>
             {
-            props.form.buttonClick && props.form.modalWindowFirstActive
+            props.buttonClick && props.modalWindowFirstActive
                 ?
-                <ModalWindowFirstContainer 
-                form={props.form}
-                dispatch={props.dispatch}
-                />
+                <ModalWindowFirstContainer />
                 :
-                <ModalWindowSecondContainer 
-                form={props.form}
-                dispatch={props.dispatch}
-                />
+                <ModalWindowSecondContainer />
             }
         </>
  )

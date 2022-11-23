@@ -1,20 +1,21 @@
+import { connect } from 'react-redux';
 import {  
     ToggleButtonVisibilityActionCreator, 
     ToggleFirstModalWindowActivityActionCreator} from '../../../../redux/form-reducer';
 import Button from './Button';
 
-const ButtonContainer = (props) => {
-
+const mapStateToProps = (state) => {
+    return {}
     
-    const toggleFirstModalWindowOnButtonClick = () => {
-            props.dispatch(ToggleButtonVisibilityActionCreator())
-            props.dispatch(ToggleFirstModalWindowActivityActionCreator());       
-        }
-
- return(
-    <Button 
-    toggleFirstModalWindowOnButtonClick={toggleFirstModalWindowOnButtonClick}
-    />
-    )
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleFirstModalWindowOnButtonClick: () => {
+            dispatch(ToggleButtonVisibilityActionCreator())
+            dispatch(ToggleFirstModalWindowActivityActionCreator())
+        }
+    }
+}
+const ButtonContainer = connect(mapStateToProps, mapDispatchToProps)(Button);
+
 export default ButtonContainer;

@@ -1,7 +1,7 @@
-// import Button from './Button/Button';
 import ButtonContainer from './Button/ButtonContainer';
 import styles from './FormForNewPatients.module.scss';
-import ModalWindow from './ModalWindow/ModalWindow';
+// import ModalWindow from './ModalWindow/ModalWindow';
+import ModalWindowContainer from './ModalWindow/ModalWindowContainer';
 
 
 const FormForNewPatients = (props) => {
@@ -11,19 +11,11 @@ const FormForNewPatients = (props) => {
         <div className={styles.container}>
             <div className={styles.content}>
                 {
-                props.form.buttonClick 
+                props.buttonClick 
                     ?
-                <ModalWindow 
-                    form={props.form}
-                    dispatch={props.dispatch}
-                    />
+                <ModalWindowContainer/>
                     :
-                <ButtonContainer
-                    // form={props.form} 
-                    dispatch={props.dispatch}
-                    // handleButtonClick={handleButtonClick}
-                    // setFirstModalWindowActive={props.form.setFirstModalWindowActive}
-                    />
+                <ButtonContainer/>
                 }           
             </div>        
         </div>

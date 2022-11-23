@@ -1,34 +1,32 @@
+import { connect } from 'react-redux';
 import {SaveFormDataActionCreator, 
     ToggleButtonVisibilityActionCreator, 
     ToggleFirstModalWindowActivityActionCreator, 
     ToggleSecondModalWindowActivityActionCreator, } from '../../../../../redux/form-reducer';
 import ModalWindowSecond from './ModalWindowSecond';
-// import styles from './ModalWindowSecond.module.scss';
 
-const ModalWindowSecondContainer = (props) => {
-
-    const cancelSecondModalWindowActive = () => {
-        props.dispatch(ToggleButtonVisibilityActionCreator())
-        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
+const mapStateToProps = (state) => {
+    return {
+        modalWindowSecondActive: state.form.modalWindowSecondActive,
     }
-    const backToFirstModalWindow = () => {
-        props.dispatch(ToggleSecondModalWindowActivityActionCreator())
-        props.dispatch(ToggleFirstModalWindowActivityActionCreator());
-    }
-
-    const saveFormData = () => {
-        props.dispatch(SaveFormDataActionCreator())
-    }
-
-    return(
-        <ModalWindowSecond
-        modalWindowSecondActive={props.form.modalWindowSecondActive} 
-        cancelSecondModalWindowActive={cancelSecondModalWindowActive}
-        backToFirstModalWindow={backToFirstModalWindow}
-        saveFormData={saveFormData}
-        />
-    )
+    
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        cancelSecondModalWindowActive: () => {
+            dispatch(ToggleButtonVisibilityActionCreator())
+            dispatch(ToggleSecondModalWindowActivityActionCreator())
+        },
+        backToFirstModalWindow: () => {
+            dispatch(ToggleSecondModalWindowActivityActionCreator())
+            dispatch(ToggleFirstModalWindowActivityActionCreator());
+        },
+        saveFormData: () => {
+            dispatch(SaveFormDataActionCreator())
+        }
+    }
+    }
+const ModalWindowSecondContainer = connect(mapStateToProps, mapDispatchToProps)(ModalWindowSecond);
 
 export default ModalWindowSecondContainer;
 

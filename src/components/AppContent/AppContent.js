@@ -1,7 +1,7 @@
-import FormForNewPatients from './FormForNewPatiens/FormForNewPatients';
-// import SearchPatients from './SearchPatiens/SearchPatients';
+// import FormForNewPatients from './FormForNewPatiens/FormForNewPatients';
 import styles from './AppContent.module.scss';
 import SearchPatientsContainer from './SearchPatiens/SearchPatientsContainer';
+import FormForNewPatientsContainer from './FormForNewPatiens/FormForNewPatientsContainer';
 
 const AppContent = () => {
 
@@ -9,10 +9,7 @@ const AppContent = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 {<SearchPatientsContainer />}
-                {/* {<FormForNewPatients 
-                // form={props.state.form}
-                // dispatch={props.dispatch}
-                />} */}
+                {<FormForNewPatientsContainer />}
             </div>   
         </div>
     )
