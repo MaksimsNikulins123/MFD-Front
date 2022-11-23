@@ -12,6 +12,7 @@ let initialState = {
     request: false,
     response: false,
     searching: "",
+    handleInputTypingTimer: null,
     searchResult: [
         {
             id: 1,
@@ -33,33 +34,35 @@ const searchReducer = (state = initialState, action, e) => {
 // debugger
 let copyState = {...state};
 
+const timer = () => {
+    return (
+        clearTimeout(copyState.handleInputTypingTimer)
+    )
+}
+
 switch(action.type){
     case HANDLE_INPUT_VALUE:
         let inputValue = action.inputValue;
         copyState.searching = inputValue;
         copyState.response = false;
+        timer()
             if(copyState.searching.length >2)
-            {
-                
-                console.log("Sending request to server");
-                // setInterval(
-                //     () => {
-                //         state.response = true;
-                //     store.dispatch(rerenderAfterSetTimeOutActionCreator());
-                //     console.log("Getting response from server");
-                //     return state;
-                //     }, 3000);
-                    setTimeout(() => {
-                        copyState.response = true;
-         
-                        console.log("Getting response from server");
+            { 
+                console.log("Preparing for sending request to server");
+               
+                copyState.handleInputTypingTimer = setTimeout(() => {
+                    console.log("Sending request to server");
+                    
+                    console.log("Getting response from server");
 
-                        store.dispatch(rerenderAfterSetTimeOutActionCreator());
-           
-                    }, 3000); 
+                    copyState.response = true;
+        
+                    store.dispatch(rerenderAfterSetTimeOutActionCreator());
+                    }, 3000);
             } 
             return copyState; 
     case RERENDER_AFTER_SET_TIME_OUT:
+        // copyState.response = !action.response
         return copyState;
     default:
         return state;
@@ -74,7 +77,8 @@ export const HandleInputValueActionCreator = (inputValue) => {
 }
 const rerenderAfterSetTimeOutActionCreator = () => {
     return {
-        type: RERENDER_AFTER_SET_TIME_OUT, 
+        type: RERENDER_AFTER_SET_TIME_OUT,
+        
     }
 }
 export default searchReducer;
