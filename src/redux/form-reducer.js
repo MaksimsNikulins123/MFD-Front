@@ -16,29 +16,29 @@ let initialState = {
 
 const formReducer = (state = initialState, action) => {
 
-    let copyState = {...state};
+    let stateCopy = {...state};
 
     switch(action.type){
         case TOGGLE_BUTTON_VISIBILITY:
-            let buttonClick = copyState.buttonClick;
-            copyState.buttonClick = !buttonClick;
-            copyState.inputValue = "";
-            return copyState;
+            let buttonClick = stateCopy.buttonClick;
+            stateCopy.buttonClick = !buttonClick;
+            stateCopy.inputValue = "";
+            return stateCopy;
         case TOGGLE_FIRST_MODAL_WINDOW_ACTIVITY:
-            let firstModalWindowActive = copyState.modalWindowFirstActive
-            copyState.modalWindowFirstActive = !firstModalWindowActive;
-            return copyState;
+            let firstModalWindowActive = stateCopy.modalWindowFirstActive
+            stateCopy.modalWindowFirstActive = !firstModalWindowActive;
+            return stateCopy;
         case HANDLE_FIRST_MODAL_WINDOW_INPUT_VALUE:
             let inputValue = action.inputValue;
-            copyState.inputValue = inputValue;
-            return copyState;
+            stateCopy.inputValue = inputValue;
+            return stateCopy;
         case TOGGLE_SECOND_MODAL_WINDOW_ACTIVITY:
-            let secondModalWindowActive = copyState.modalWindowSecondActive;
-            copyState.modalWindowSecondActive = !secondModalWindowActive;
-            return copyState;
+            let secondModalWindowActive = stateCopy.modalWindowSecondActive;
+            stateCopy.modalWindowSecondActive = !secondModalWindowActive;
+            return stateCopy;
         case SAVE_FORM_DATA:
             console.log('Save')
-            return copyState;
+            return stateCopy;
         default:
             return state;
     }

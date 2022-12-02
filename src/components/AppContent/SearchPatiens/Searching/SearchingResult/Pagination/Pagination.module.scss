@@ -1,0 +1,22 @@
+@import "./../../../../styles/variables.module";
+
+.container {
+    background: #e2dddd;
+    color: #111111;
+    padding: $componentPadding;
+}
+// .content{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     & input{
+//         text-align: center;
+//         width: 50%;
+//         height: 25px;
+//         margin: 0 auto;
+//         font-family: sans-serif;
+//         border: none;
+//         border-radius: 25px;
+//     }
+// }
+

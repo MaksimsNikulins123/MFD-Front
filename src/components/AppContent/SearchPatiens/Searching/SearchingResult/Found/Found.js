@@ -3,15 +3,19 @@ import styles from './Found.module.scss';
 
 const Found = (props) => {
 
-    const hideAction = () => {
-            console.log("hide")  
+    const hideAction = (e) => {
+            let patientIdToHide = e.target.id; 
+            props.hidePatientInfo(patientIdToHide)
         }
     const deleteAction = () => {
             console.log("delete")  
         }
 
     let foundPatientList = props.searchResult.map((patient) => {
-        return (
+        if(patient.hide) {
+            return null
+        }else {
+            return (
                 <li key={patient.id}>
                     <div className={styles.listItemTitle}>
                         {patient.created_at}
@@ -27,16 +31,18 @@ const Found = (props) => {
                     </div>
                     <div className={styles.listItemTitle}>
                         <div className={styles.buttons}>
-                            <button className={styles.buttonHide} onClick={hideAction}>
+                            <button className={styles.buttonHide} id={patient.id} onClick={hideAction}>
                                 Hide
                             </button>
-                            <button className={styles.buttonDelete} onClick={deleteAction}>
+                            <button className={styles.buttonDelete} id={patient.id} onClick={deleteAction}>
                                 Delete
                             </button>
                         </div> 
                     </div>
                 </li>
         )         
+        }
+        
     })
 
     return(  

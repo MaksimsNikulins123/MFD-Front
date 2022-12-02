@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { HidePatientInfoActionCreator } from '../../../../../../redux/search-reducer';
 import Found from './Found';
 
 const mapStateToProps = (state) => {
@@ -9,7 +10,11 @@ const mapStateToProps = (state) => {
     
 }
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        hidePatientInfo: (patientIdToHide) => {
+            dispatch(HidePatientInfoActionCreator(patientIdToHide));
+        }
+    }
 }
 
 const FoundContainer = connect(mapStateToProps, mapDispatchToProps)(Found);
