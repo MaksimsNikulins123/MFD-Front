@@ -1,16 +1,17 @@
 import Preloader from './Preloader/Preloader';
-// import SearchingResult from './SearchingResult/SearchingResult';
-import SearchingResultContainer from './SearchingResult/SearchingResultContainer';
+import SearchingResultApiContainer from './SearchingResult/SearchingResultApiContainer';
+
 
 
 const Searching = (props) => {
-// debugger
+debugger
     return(
             <>
                 {
                 props.response 
+                // props.request 
                     ? 
-                <SearchingResultContainer />
+                <SearchingResultApiContainer />
                     : 
                 <Preloader /> 
                 }

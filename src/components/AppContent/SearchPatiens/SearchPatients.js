@@ -1,5 +1,4 @@
 import Default from './Default/Default';
-// import Searching from './Searching/Searching';
 import SearchingContainer from './Searching/SearchingContainer';
 // import SearchInput from './SearchInput/SearchInput';
 import SearchInputContainer from './SearchInput/SearchInputContainer';

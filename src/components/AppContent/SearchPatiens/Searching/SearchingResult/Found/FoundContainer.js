@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { HidePatientInfoActionCreator } from '../../../../../../redux/search-reducer';
 import Found from './Found';
 
+
 const mapStateToProps = (state) => {
     // debugger
     return {

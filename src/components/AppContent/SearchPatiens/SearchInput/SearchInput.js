@@ -1,6 +1,7 @@
 import styles from './SearchInput.module.scss';
 
 const SearchInput = (props) => {
+    // debugger
 
     const checkIsInputNumber = (e) => {
                 let input = e.key;

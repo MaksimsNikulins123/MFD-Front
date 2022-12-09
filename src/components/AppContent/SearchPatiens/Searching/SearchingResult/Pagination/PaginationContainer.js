@@ -1,19 +1,26 @@
 import { connect } from 'react-redux';
-import { Pagination } from 'reactstrap';
+import { ChangeCurrentPageToBackActionCreator, ChangeCurrentPageToNextActionCreator } from '../../../../../../redux/search-reducer';
+import Pagination from './Pagination';
 
 
 const mapStateToProps = (state) => {
     // debugger
     return {
-        // searchResult: state.search.searchResult
+        usersTotalCount: state.search.usersTotalCount,
+        usersCountOnPage: state.search.usersCountOnPage,
+        pagesAll: state.search.pagesAll,
+        currentPage: state.search.currentPage
     }
     
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        // hidePatientInfo: (patientIdToHide) => {
-        //     dispatch(HidePatientInfoActionCreator(patientIdToHide));
-        // }
+        changeCurrentPageToBack: () => {
+            dispatch(ChangeCurrentPageToBackActionCreator())
+        },
+        changeCurrentPageToNext: () => {
+            dispatch(ChangeCurrentPageToNextActionCreator())
+        }
     }
 }
 

@@ -34,6 +34,10 @@ const Found = (props) => {
                             <button className={styles.buttonHide} id={patient.id} onClick={hideAction}>
                                 Hide
                             </button>
+                        </div> 
+                    </div>
+                    <div className={styles.listItemTitle}>
+                        <div className={styles.buttons}>
                             <button className={styles.buttonDelete} id={patient.id} onClick={deleteAction}>
                                 Delete
                             </button>
@@ -62,7 +66,10 @@ const Found = (props) => {
                         Uzvārds
                     </div>
                     <div className={styles.itemTitle}>
-                        Ierakstu dzešana
+                        Slept
+                    </div>
+                    <div className={styles.itemTitle}>
+                        Dzest
                     </div>
                 </div>
                 {foundPatientList}   
