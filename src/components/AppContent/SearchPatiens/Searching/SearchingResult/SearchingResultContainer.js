@@ -3,7 +3,9 @@ import SearchingResult from './SearchingResult';
 
 const mapStateToProps = (state) => {
     return {
-        searchResult: state.search.searchResult
+        // searchResult: state.search.searchResult
+        response: state.search.response,
+        // request: state.search.request
     }
 }
 const mapDispatchToProps = (dispatch) => {

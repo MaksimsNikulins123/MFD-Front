@@ -57,6 +57,7 @@ switch(action.type){
                     console.log("Show users with personal code started on " + inputValue);
 
                     stateCopy.request = true;
+                    stateCopy.response = false;
                    
                     store.dispatch(rerenderAfterSetTimeOutActionCreator());
                     }, 3000);
@@ -65,6 +66,7 @@ switch(action.type){
     case AXIOS_GET_ALL_USERS:
         let allUsers = action.allUsers;
         stateCopy.searchResult = allUsers;
+        stateCopy.pagesAll = Math.ceil(stateCopy.searchResult.length / stateCopy.usersCountOnPage)
         stateCopy.request = false;
         stateCopy.response = true;
         // store.dispatch(rerenderAfterSetTimeOutActionCreator());

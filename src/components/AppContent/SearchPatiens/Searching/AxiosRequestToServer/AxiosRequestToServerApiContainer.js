@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import { AxiosGetAllUsersActionCreator } from '../../../../../redux/search-reducer';
-import SearchingResultApi from './SearchingResultApi';
+import AxiosRequestToServerApi from './AxiosRequestToServerApi';
+// import FoundApi from './AxiosRequestToServerApi';
+// import SearchingResultApi from './FoundApi';
 
 const mapStateToProps = (state) => {
     // debugger
     return {
-        searchResult: state.search.searchResult,
+        // searchResult: state.search.searchResult,
         request: state.search.request,
-        response: state.search.response
+        response: state.search.response,
+        searching: state.search.searching
     }
 }
 
@@ -23,6 +26,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const SearchingResultApiContainer = connect(mapStateToProps, mapDispatchToProps)(SearchingResultApi)
+const AxiosRequestToServerApiContainer = connect(mapStateToProps, mapDispatchToProps)(AxiosRequestToServerApi)
 
-export default SearchingResultApiContainer;
+export default AxiosRequestToServerApiContainer;

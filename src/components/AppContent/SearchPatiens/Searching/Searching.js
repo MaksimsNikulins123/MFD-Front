@@ -1,19 +1,33 @@
+import AxiosRequestToServerApiContainer from './AxiosRequestToServer/AxiosRequestToServerApiContainer';
 import Preloader from './Preloader/Preloader';
-import SearchingResultApiContainer from './SearchingResult/SearchingResultApiContainer';
+// import SearchingResultApiContainer from './SearchingResult/SearchingResultApiContainer';
+import SearchingResultContainer from './SearchingResult/SearchingResultContainer';
 
 
 
 const Searching = (props) => {
-debugger
+// debugger
     return(
             <>
                 {
                 props.response 
                 // props.request 
                     ? 
-                <SearchingResultApiContainer />
+                // <SearchingResultApiContainer />
+                <SearchingResultContainer />
                     : 
-                <Preloader /> 
+                 <>
+                    {
+                        props.request
+                        ?
+                        <AxiosRequestToServerApiContainer />
+                        :
+                        <Preloader />
+                    }
+                    
+                    
+                </>
+               
                 }
             </>
     )

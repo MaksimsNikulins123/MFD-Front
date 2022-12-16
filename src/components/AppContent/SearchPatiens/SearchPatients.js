@@ -16,7 +16,7 @@ const SearchPatients = (props) => {
          
                 < SearchInputContainer />
                 {
-                props.searching.length > 2 
+                props.searching.length > 2
                     ? 
                 <SearchingContainer />  
                     :  

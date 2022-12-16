@@ -3,7 +3,8 @@ import SearchPatients from "./SearchPatients"
 
 const mapStateToProps = (state) => {
     return {
-        searching: state.search.searching
+        searching: state.search.searching,
+        request: state.search.request
     }
     
 }

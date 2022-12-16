@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => {
     // debugger
     return {
-        response: state.search.response
-        // request: state.search.request
+        response: state.search.response,
+        request: state.search.request
     }
     
 }
