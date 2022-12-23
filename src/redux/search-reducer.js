@@ -4,15 +4,14 @@ const HANDLE_INPUT_VALUE = "HANDLE-INPUT-VALUE";
 const RERENDER_AFTER_SET_TIME_OUT = "RERENDER-AFTER-SET-TIME-OUT";
 const HIDE_PATIENT_INFO = "HIDE-PATIENT-INFO";
 const CHANGE_CURRENT_PAGE_TO_BACK = "CHANGE-CURRENT-PAGE-TO-BACK";
-const CHANGE_CURRENT_PAGE_TO_NEXT = "CHANGE-CURRENT-PAGE-TO-NEXT"
-const AXIOS_GET_ALL_USERS = "AXIOS-GET-ALL-USERS"
+const CHANGE_CURRENT_PAGE_TO_NEXT = "CHANGE-CURRENT-PAGE-TO-NEXT";
+const AXIOS_FIND_CURRENT_USERS = "AXIOS-FIND-CURRENT-USERS";
 
 let initialState = {
     request: false,
     response: false,
     searching: "",
-    handleInputTypingTimer: null,
-    handlePaginationTimer: null,
+    timer: null,
     searchResult: [
         
     ],
@@ -25,216 +24,114 @@ const searchReducer = (state = initialState, action, e) => {
 // debugger
 let stateCopy = {...state};
 
-const handleInputTimer = () => {
+
+const resetTimer = () => {
     return (
-        clearTimeout(stateCopy.handleInputTypingTimer)
+        clearTimeout(stateCopy.timer)
     )
 }
-const handlePaginationTimer = () => {
-    return (
-        clearTimeout(stateCopy.handlePaginationTimer)
-    )
-}
+
 
 
 switch(action.type){
     
     case HANDLE_INPUT_VALUE:
-    //   debugger
         let inputValue = action.inputValue;
         stateCopy.searching = inputValue;
         stateCopy.response = false;
-        
-        handleInputTimer()
-        handlePaginationTimer() 
+        stateCopy.currentPage = 1;
+        resetTimer()
             if(stateCopy.searching.length >2)
             {  
                 console.log("Preparing for sending request to server");
-  
-                stateCopy.handleInputTypingTimer = setTimeout(() => {
+
+                stateCopy.timer = setTimeout(() => {
                    
                     console.log("Sending request to server");
                     console.log("Show users with personal code started on " + inputValue);
 
                     stateCopy.request = true;
-                    stateCopy.response = false;
                    
                     store.dispatch(rerenderAfterSetTimeOutActionCreator());
                     }, 3000);
             } 
-            return stateCopy; 
-    case AXIOS_GET_ALL_USERS:
-        let allUsers = action.allUsers;
-        stateCopy.searchResult = allUsers;
-        stateCopy.pagesAll = Math.ceil(stateCopy.searchResult.length / stateCopy.usersCountOnPage)
+            return stateCopy;  
+    case AXIOS_FIND_CURRENT_USERS:
+        let currentUsers = action.currentUsers;
+        let foundUsersCount = action.foundUsersCount;
+        stateCopy.searchResult = currentUsers;
+        if(foundUsersCount == 0)
+        {
+            stateCopy.usersTotalCount = 1;
+        }
+        else
+        {
+            stateCopy.usersTotalCount = foundUsersCount;
+        }
+        stateCopy.pagesAll = Math.ceil( stateCopy.usersTotalCount / stateCopy.usersCountOnPage)
         stateCopy.request = false;
         stateCopy.response = true;
-        // store.dispatch(rerenderAfterSetTimeOutActionCreator());
         return stateCopy;
     case RERENDER_AFTER_SET_TIME_OUT:
         return stateCopy;
     case HIDE_PATIENT_INFO:
         let patientId = action.patientId;
-        stateCopy.searchResult = [...state.searchResult];
+        stateCopy.searchResult = [...state.searchResult]
         
         for (let index = 0; index < stateCopy.searchResult.length; index++) {
-            if(stateCopy.searchResult[index].id == patientId ) {
-                stateCopy.searchResult[index] = {...state.searchResult[index]}
-                stateCopy.searchResult[index].hide = true;
-            }        
+            
+            if(stateCopy.searchResult[index].id == patientId )
+            {
+                stateCopy.searchResult.splice(index, 1)
+            }
+            else
+            {
+                continue;
+            }
+            
         }
         return stateCopy;
     case CHANGE_CURRENT_PAGE_TO_BACK:
-        if(stateCopy.currentPage == 1) {
+       
+        if(stateCopy.currentPage == 1){
             return stateCopy
         }
         else {
-            stateCopy.currentPage = stateCopy.currentPage - 1;
-            handleInputTimer()
-            handlePaginationTimer()     
-                console.log("Preparing for sending request to server");
-               
-                stateCopy.handlePaginationTimer = setTimeout(() => {
-                   
+            stateCopy.response = false;
+            stateCopy.request = false;
+            resetTimer()
+                stateCopy.timer = setTimeout(() => {
+    
+                    stateCopy.currentPage = stateCopy.currentPage - 1;
                     console.log("Sending request to server");
-
-                    console.log("Show next" + " " + stateCopy.usersCountOnPage + " " + "users");
-
-                    //axios request
-                
-                    console.log("Getting response from server");
-
-                    stateCopy.response = true;
-
-                    //axios response
-
-                    // stateCopy.searchResult = axios response
-
-                    stateCopy.searchResult = [
-                        {
-                            id: 1,
-                            created_at: "12.09.2022",
-                            personal_code: "123456-12345",
-                            name: "Max",
-                            surname: "Nikulin",
-                            hide: false
-                        },
-                        {
-                            id: 2,
-                            created_at: "22.09.2022",
-                            personal_code: "123456-12345",
-                            name: "Maxim",
-                            surname: "Nikulin",
-                            hide: false
-                        },
-                        {
-                            id: 3,
-                            created_at: "12.09.2022",
-                            personal_code: "123456-12345",
-                            name: "Max",
-                            surname: "Nikulin",
-                            hide: false
-                        },
-                        {
-                            id: 4,
-                            created_at: "22.09.2022",
-                            personal_code: "123456-12345",
-                            name: "Maxim",
-                            surname: "Nikulin",
-                            hide: false
-                        },
-                        {
-                            id: 5,
-                            created_at: "12.09.2022",
-                            personal_code: "123456-12345",
-                            name: "Max",
-                            surname: "Nikulin",
-                            hide: false
-                        },
-                        ]
-
-                    stateCopy.pagesAll = Math.ceil(stateCopy.usersTotalCount / stateCopy.usersCountOnPage)
-        
+                    console.log("Show previous" + " " + stateCopy.usersCountOnPage + " " + "users");
+    
+                    stateCopy.request = true;
+                                
                     store.dispatch(rerenderAfterSetTimeOutActionCreator());
-                    }, 3000);
+                }, 1000); 
         }
         return stateCopy
     case CHANGE_CURRENT_PAGE_TO_NEXT:
+       
         if(stateCopy.currentPage == stateCopy.pagesAll){
             return stateCopy
         }
         else {
-            stateCopy.currentPage = stateCopy.currentPage + 1;
-            handleInputTimer()
-            handlePaginationTimer()     
-                console.log("Preparing for sending request to server");
-               
-                stateCopy.handlePaginationTimer = setTimeout(() => {
-                   
-                    console.log("Sending request to server");
+            stateCopy.response = false;
+            stateCopy.request = false;
+            resetTimer()
+            stateCopy.timer = setTimeout(() => {
 
-                    console.log("Show next" + " " + stateCopy.usersCountOnPage + " " + "users");
+                stateCopy.currentPage = stateCopy.currentPage + 1;
+                console.log("Sending request to server");
+                console.log("Show next" + " " + stateCopy.usersCountOnPage + " " + "users");
 
-                    //axios request
-                
-                    console.log("Getting response from server");
-
-                    stateCopy.response = true;
-
-                    //axios response
-
-                    // stateCopy.searchResult = axios response
-
-                    stateCopy.searchResult = [
-                        {
-                                    id: 6,
-                                    created_at: "22.09.2022",
-                                    personal_code: "123456-12345",
-                                    name: "Maxim",
-                                    surname: "Nikulin",
-                                    hide: false
-                            },
-                            {
-                                    id: 7,
-                                    created_at: "12.09.2022",
-                                    personal_code: "123456-12345",
-                                    name: "Max",
-                                    surname: "Nikulin",
-                                    hide: false
-                            },
-                            {
-                                    id: 8,
-                                    created_at: "22.09.2022",
-                                    personal_code: "123456-12345",
-                                    name: "Maxim",
-                                    surname: "Nikulin",
-                                    hide: false
-                            },
-                            {
-                                    id: 9,
-                                    created_at: "12.09.2022",
-                                    personal_code: "123456-12345",
-                                    name: "Max",
-                                    surname: "Nikulin",
-                                    hide: false
-                            },
-                            {
-                                    id: 10,
-                                    created_at: "22.09.2022",
-                                    personal_code: "123456-12345",
-                                    name: "Maxim",
-                                    surname: "Nikulin",
-                                    hide: false
-                            },
-                    ]
-
-                    stateCopy.pagesAll = Math.ceil(stateCopy.usersTotalCount / stateCopy.usersCountOnPage)
-        
-                    store.dispatch(rerenderAfterSetTimeOutActionCreator());
-                    }, 3000);
-            
+                stateCopy.request = true;
+                            
+                store.dispatch(rerenderAfterSetTimeOutActionCreator());
+            }, 1000);          
         }
-        
         return stateCopy
     default:
         return state;
@@ -259,39 +156,29 @@ export const HandleInputValueActionCreator = (inputValue) => {
         inputValue: inputValue
     }
 }
-export const AxiosGetAllUsersActionCreator = (allUsers) => {
+export const AxiosFindCurrentUsersActionCreator = (currentUsers, foundUsersCount) => {
     return {
-        type: AXIOS_GET_ALL_USERS,
-        allUsers: allUsers
+        type: AXIOS_FIND_CURRENT_USERS,
+        currentUsers: currentUsers,
+        foundUsersCount: foundUsersCount
     }
 }
-
-
 export const HidePatientInfoActionCreator = (patientIdToHide) => {
     return {
         type: HIDE_PATIENT_INFO,
-        patientId: patientIdToHide
-
-        
+        patientId: patientIdToHide  
     }
 }
 export const ChangeCurrentPageToBackActionCreator = () => {
     return {
-        type: CHANGE_CURRENT_PAGE_TO_BACK,
-       
-
-        
+        type: CHANGE_CURRENT_PAGE_TO_BACK,   
     }
 }
 export const ChangeCurrentPageToNextActionCreator = () => {
     return {
-        type: CHANGE_CURRENT_PAGE_TO_NEXT,
-       
-
-        
+        type: CHANGE_CURRENT_PAGE_TO_NEXT,  
     }
 }
-
 
 
 export default searchReducer;

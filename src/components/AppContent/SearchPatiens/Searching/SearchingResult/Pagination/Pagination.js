@@ -4,8 +4,6 @@ const Pagination = (props) => {
 
     let pages = []
 
-    // let pagesAll = Math.ceil(props.usersTotalCount / props.usersCountOnPage)
-
     for (let index = 1; index <= props.pagesAll; index++) {
             pages.push(index);
         }
@@ -22,7 +20,7 @@ const Pagination = (props) => {
         else
             return(
                 <li key={page}>
-                    <div className={styles.pageNumber}>
+                    <div>
                         {page}
                     </div>
                 </li>

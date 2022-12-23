@@ -1,31 +1,22 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
-// import SearchingResultContainer from '../SearchingResultContainer';
-// import FoundContainer from '../SearchingResult/Found/FoundContainer';
 
 const AxiosRequestToServerApi = (props) => {
-// debugger
-    // const [data, setData] = useState(props.searchResult);
-    // const [request, setRequest] = useState(props.request);
-    // const [response, setResponse] = useState(props.response);
-    // const [loaded, setLoaded] = useState(false);
+
     console.log(props.searching)
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/V1/patients/${props.searching}`)
+        let searching = props.searching;
+        axios.post('http://127.0.0.1:8000/api/V1/patients/find', 
+            {
+                personal_code: searching,
+                page_number: props.currentPage,
+                users_count_on_page: props.usersCountOnPage
+            })
         .then(response => {
-            console.log(response.data.data)
-            props.axiosGetAllUsers([response.data.data])
+            console.log(response)
+            props.axiosFindCurrentUsers(response.data.data, response.data.foundUsersCount)
         })
         }, []);
-
-
-    // useEffect(() => {
-    //     axios.get(`http://127.0.0.1:8000/api/V1/patients/`)
-    //     .then(response => {
-    //         console.log(response.data.data)
-    //         props.axiosGetAllUsers(response.data.data)
-    //     })
-    //     }, []);
   
         return (
             <>

@@ -2,16 +2,19 @@ import styles from './Found.module.scss';
 
 
 const Found = (props) => {
-
+// debugger
     const hideAction = (e) => {
             let patientIdToHide = e.target.id; 
             props.hidePatientInfo(patientIdToHide)
         }
-    const deleteAction = () => {
-            console.log("delete")  
+    const deleteAction = (e) => {
+            let patientIdToDelete = e.target.id; 
+            console.log("delete " + patientIdToDelete)  
         }
 
     let foundPatientList = props.searchResult.map((patient) => {
+        // console.log(props.searchResult)
+        // console.log(patient)
         if(patient.hide) {
             return null
         }else {
