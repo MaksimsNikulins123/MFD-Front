@@ -21,5 +21,3 @@ rerender();
 
 store.subscribe(() => rerender());
 
-window.store = store;
-export default store;

@@ -11,11 +11,10 @@ const Searching = (props) => {
             <>
                 {
                 props.response 
-                // props.request 
                     ? 
-                // <SearchingResultApiContainer />
                 <SearchingResultContainer />
                     : 
+                    
                  <>
                     {
                         props.request
@@ -23,9 +22,7 @@ const Searching = (props) => {
                         <AxiosRequestToServerApiContainer />
                         :
                         <Preloader />
-                    }
-                    
-                    
+                    }  
                 </>
                
                 }

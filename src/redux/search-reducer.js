@@ -1,4 +1,6 @@
+
 import store from "./redux-store";
+import PatientsApi from './../api/PatientsApi';
 
 const HANDLE_INPUT_VALUE = "HANDLE-INPUT-VALUE";
 const RERENDER_AFTER_SET_TIME_OUT = "RERENDER-AFTER-SET-TIME-OUT";
@@ -10,6 +12,7 @@ const AXIOS_FIND_CURRENT_USERS = "AXIOS-FIND-CURRENT-USERS";
 let initialState = {
     request: false,
     response: false,
+    loading: false,
     searching: "",
     timer: null,
     searchResult: [
@@ -43,6 +46,7 @@ switch(action.type){
         resetTimer()
             if(stateCopy.searching.length >2)
             {  
+                stateCopy.loading = true;
                 console.log("Preparing for sending request to server");
 
                 stateCopy.timer = setTimeout(() => {
@@ -51,7 +55,9 @@ switch(action.type){
                     console.log("Show users with personal code started on " + inputValue);
 
                     stateCopy.request = true;
-                   
+                    // FindPatiensThunkCreator(stateCopy.searching, stateCopy.currentPage, stateCopy.usersCountOnPage);
+                    // FindPatiensThunk()
+                //    Find(stateCopy.searching, stateCopy.currentPage, stateCopy.usersCountOnPage);
                     store.dispatch(rerenderAfterSetTimeOutActionCreator());
                     }, 3000);
             } 
@@ -71,6 +77,7 @@ switch(action.type){
         stateCopy.pagesAll = Math.ceil( stateCopy.usersTotalCount / stateCopy.usersCountOnPage)
         stateCopy.request = false;
         stateCopy.response = true;
+        
         return stateCopy;
     case RERENDER_AFTER_SET_TIME_OUT:
         return stateCopy;
@@ -180,5 +187,18 @@ export const ChangeCurrentPageToNextActionCreator = () => {
     }
 }
 
+export const FindPatiensThunkCreator = (searching, currentPage, usersCountOnPage) => {
+
+    return  (dispatch) => {
+        // debugger
+        console.log("find");
+        let result = PatientsApi.findPatients(searching, currentPage, usersCountOnPage);
+        console.log(result);
+    }
+}
+// export const FindPatiensThunk = (dispatch) => {
+//     console.log("find");
+//     PatientsApi.findPatients(stateCopy.searching, stateCopy.currentPage, stateCopy.usersCountOnPage);
+// }
 
 export default searchReducer;

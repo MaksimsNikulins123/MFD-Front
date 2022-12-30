@@ -5,7 +5,8 @@ const mapStateToProps = (state) => {
     // debugger
     return {
         response: state.search.response,
-        request: state.search.request
+        request: state.search.request,
+        loading: state.search.loading
     }
     
 }
