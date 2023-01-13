@@ -1,7 +1,7 @@
-import AxiosRequestToServerApiContainer from './AxiosRequestToServer/AxiosRequestToServerApiContainer';
+import AxiosRequestContainer from './AxiosRequestToServer/AxiosRequestContainer';
 import Preloader from './Preloader/Preloader';
-// import SearchingResultApiContainer from './SearchingResult/SearchingResultApiContainer';
 import SearchingResultContainer from './SearchingResult/SearchingResultContainer';
+import App from './../../../../App';
 
 
 
@@ -9,6 +9,7 @@ const Searching = (props) => {
 // debugger
     return(
             <>
+
                 {
                 props.response 
                     ? 
@@ -19,12 +20,13 @@ const Searching = (props) => {
                     {
                         props.request
                         ?
-                        <AxiosRequestToServerApiContainer />
+                        <AxiosRequestContainer />
                         :
                         <Preloader />
                     }  
                 </>
                
+                
                 }
             </>
     )
