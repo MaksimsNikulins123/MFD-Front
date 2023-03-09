@@ -5,16 +5,18 @@ import { HandleInputThunkCreator } from './../../../../redux/thunks/HandleInputT
 
 const mapStateToProps = (state) => {
     return {
-        searching: state.search.searching
+        searching: state.search.searching,
+        currentPage: state.search.currentPage,
+        usersCountOnPage: state.search.usersCountOnPage
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     
     return {
-        handleSearchInput: (inputValue) => {
+        handleSearchInput: (inputValue, currentPage, usersCountOnPage) => {
             // dispatch(HandleInputValueActionCreator(inputValue));
-            dispatch(HandleInputThunkCreator(inputValue))
+            dispatch(HandleInputThunkCreator(inputValue, currentPage, usersCountOnPage))
 
         }
     }

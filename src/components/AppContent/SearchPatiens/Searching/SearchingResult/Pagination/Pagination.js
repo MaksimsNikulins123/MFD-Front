@@ -27,19 +27,33 @@ const Pagination = (props) => {
        )   
     }
     )
-    
+    const changeCurrentPageToNext = () => {
+        props.changeCurrentPageToNext(
+            props.currentPage, 
+            props.pagesAll, 
+            props.searching, 
+            props.usersCountOnPage)
+    }
+
+    const changeCurrentPageToPrevious = () => {
+        props.changeCurrentPageToPrevious(
+            props.currentPage, 
+            props.searching, 
+            props.currentPage, 
+            props.usersCountOnPage)
+    }
 
     return(
             <div className={styles.container}>
                 <div className={styles.pagination}>
                     <div>
-                        <button className={styles.buttonPagination} onClick={props.changeCurrentPageToBack} role="button">back</button>
+                        <button className={styles.buttonPagination} onClick={changeCurrentPageToPrevious} role="button">back</button>
                     </div>
                     <div className={styles.pages}>
                         {pagesArray}
                     </div>
                     <div>
-                        <button className={styles.buttonPagination} onClick={props.changeCurrentPageToNext} role="button">next</button>
+                        <button className={styles.buttonPagination} onClick={changeCurrentPageToNext} role="button">next</button>
                     </div>
                     
                 </div>

@@ -1,8 +1,9 @@
-import PatientsApi from "../../api/PatientsApi"
+import GetUsersFromApi from "../../api/GetUsersFromApi"
 
 export const FindPatiensThunkCreator = (searching, currentPage, usersCountOnPage) => {
+    
         return (dispatch) => {
-        // FindPatients(searching, currentPage, usersCountOnPage, dispatch)      
-        PatientsApi.FindPatients(searching, currentPage, usersCountOnPage, dispatch)      
+            GetUsersFromApi(searching, currentPage, usersCountOnPage, dispatch)
+            
     }
 }

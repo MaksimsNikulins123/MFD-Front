@@ -11,7 +11,8 @@ const SearchInput = (props) => {
             }
     const handleSearchInput = (e) => {
         let inputValue = e.target.value;
-            props.handleSearchInput(inputValue)
+            // props.handleSearchInput(inputValue)
+            props.handleSearchInput(inputValue, props.currentPage, props.usersCountOnPage)
             }
             
     return(

@@ -1,6 +1,5 @@
-// import PatientsApi from "../../api/PatientsApi"
-
 import { HandleInputValueActionCreator, ToggleLoadingAnimationActionCreator } from "../search-reducer";
+import { FindPatiensThunkCreator } from "./FindPatientsThunkCreator";
 
 let timer = null;
 
@@ -10,8 +9,7 @@ const resetTimer = () => {
         )
     }
 
-export const HandleInputThunkCreator = (searching) => {
-
+export const HandleInputThunkCreator = (searching, currentPage,  usersCountOnPage) => {
     resetTimer()
     
         return (dispatch) => {
@@ -20,26 +18,14 @@ export const HandleInputThunkCreator = (searching) => {
             
             if(searching.length > 2) {
 
-            dispatch(ToggleLoadingAnimationActionCreator())
-
-            console.log(searching)
-            // stateCopy.request = false;
-                console.log("Preparing for sending request to server");
-
-                timer = setTimeout(() => {
-
-                    console.log("Sending request to server");
-                    console.log("Show users with personal code started on " + searching);
-
-                    // dispatch(ToggleLoadingAnimation(true));
-                    // FindPatiensThunkCreator(stateCopy.searching, stateCopy.currentPage, stateCopy.usersCountOnPage);
-                    // FindPatiensThunk()
-                    //    Find(stateCopy.searching, stateCopy.currentPage, stateCopy.usersCountOnPage);
-                    // store.dispatch(rerenderAfterSetTimeOutActionCreator());
-                }, 3000);
-        // FindPatients(searching, currentPage, usersCountOnPage, dispatch)      
-        // PatientsApi.FindPatients(searching, currentPage, usersCountOnPage, dispatch)      
-    }
+            dispatch(ToggleLoadingAnimationActionCreator(true))
+                
+            timer = setTimeout(() => {
+                   
+                    dispatch(FindPatiensThunkCreator(searching, currentPage, usersCountOnPage));
+                   
+            }, 3000);   
+        }
     }
    
         
