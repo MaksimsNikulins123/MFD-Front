@@ -1,9 +1,9 @@
-import AppContent from './components/AppContent/AppContent';
+import AppContentContainer from './components/AppContent/AppContentContainer';
 
 function App() {
   return (
     <>
-      {<AppContent />}
+      {<AppContentContainer />}
     </>
   );
 }

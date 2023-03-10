@@ -2,14 +2,29 @@
 import styles from './AppContent.module.scss';
 import SearchPatientsContainer from './SearchPatiens/SearchPatientsContainer';
 import FormForNewPatientsContainer from './FormForNewPatiens/FormForNewPatientsContainer';
+import AutherizationContainer from './Autherization/AutherizationContainer';
 
-const AppContent = () => {
+const AppContent = (props) => {
 
     return(
         <div className={styles.container}>
             <div className={styles.content}>
-                {<SearchPatientsContainer />}
-                {<FormForNewPatientsContainer />}
+                <>
+                    {
+                        props.auth
+                        ?
+                        <>
+                            <SearchPatientsContainer />
+                            <FormForNewPatientsContainer />
+                        </>
+                        :
+
+                        <AutherizationContainer />
+
+                    }
+                    
+                </>
+                
             </div>   
         </div>
     )

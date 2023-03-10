@@ -1,6 +1,3 @@
-// import PatientsApi from "../api/PatientsApi";
-// import store from "./redux-store";
-import { ToggleToNextPageThunkCreator } from './thunks/ToggleToNextPageThunkCreator';
 
 const HANDLE_INPUT_VALUE = "HANDLE-INPUT-VALUE";
 const RERENDER_AFTER_SET_TIME_OUT = "RERENDER-AFTER-SET-TIME-OUT";
@@ -15,6 +12,7 @@ const RESPONSE_FROM_API = "RESPONSE-FROM-API"
 
 
 let initialState = {
+    auth: true,
     request: false,
     response: false,
     searching: "",
@@ -35,11 +33,11 @@ const searchReducer = (state = initialState, action) => {
     };
 
 
-    const resetTimer = () => {
-        return (
-            clearTimeout(stateCopy.timer)
-        )
-    }
+    // const resetTimer = () => {
+    //     return (
+    //         clearTimeout(stateCopy.timer)
+    //     )
+    // }
 
 
 
@@ -79,7 +77,7 @@ const searchReducer = (state = initialState, action) => {
             }
             return stateCopy;
         case CHANGE_CURRENT_PAGE_TO_PREVIOUS:
-            if(stateCopy.currentPage == 1 )
+            if(stateCopy.currentPage === 1 )
             {
                 return stateCopy; 
             }else{
@@ -87,7 +85,7 @@ const searchReducer = (state = initialState, action) => {
             }   
             return stateCopy;
         case CHANGE_CURRENT_PAGE_TO_NEXT:
-            if(stateCopy.currentPage == stateCopy.pagesAll)
+            if(stateCopy.currentPage === stateCopy.pagesAll)
             {
                 return stateCopy;
             }else{
@@ -113,13 +111,13 @@ const searchReducer = (state = initialState, action) => {
 
 //Async function realization in store
 //-------------------------------------------------------------------
-const rerenderAfterSetTimeOutActionCreator = () => {
-    // debugger
-    return {
-        type: RERENDER_AFTER_SET_TIME_OUT,
+// const rerenderAfterSetTimeOutActionCreator = () => {
+//     // debugger
+//     return {
+//         type: RERENDER_AFTER_SET_TIME_OUT,
 
-    }
-}
+//     }
+// }
 //-------------------------------------------------------------------
 
 export const HandleInputValueActionCreator = (inputValue) => {

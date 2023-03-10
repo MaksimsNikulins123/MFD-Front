@@ -11,7 +11,7 @@ const resetTimer = () => {
 
 export const HandleInputThunkCreator = (searching, currentPage,  usersCountOnPage) => {
     resetTimer()
-    
+
         return (dispatch) => {
          
             dispatch(HandleInputValueActionCreator(searching))

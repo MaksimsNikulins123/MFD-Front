@@ -8,7 +8,7 @@ const Pagination = (props) => {
             pages.push(index);
         }
     let pagesArray = pages.map((page) => {
-        if(page == props.currentPage) {
+        if(page === props.currentPage) {
             return (
                 <li key={page}>
                     <div className={styles.active} >
@@ -39,7 +39,6 @@ const Pagination = (props) => {
         props.changeCurrentPageToPrevious(
             props.currentPage, 
             props.searching, 
-            props.currentPage, 
             props.usersCountOnPage)
     }
 
@@ -47,13 +46,13 @@ const Pagination = (props) => {
             <div className={styles.container}>
                 <div className={styles.pagination}>
                     <div>
-                        <button className={styles.buttonPagination} onClick={changeCurrentPageToPrevious} role="button">back</button>
+                        <button className={styles.buttonPagination} onClick={changeCurrentPageToPrevious} >back</button>
                     </div>
                     <div className={styles.pages}>
                         {pagesArray}
                     </div>
                     <div>
-                        <button className={styles.buttonPagination} onClick={changeCurrentPageToNext} role="button">next</button>
+                        <button className={styles.buttonPagination} onClick={changeCurrentPageToNext}>next</button>
                     </div>
                     
                 </div>
