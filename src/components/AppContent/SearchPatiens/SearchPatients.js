@@ -9,6 +9,9 @@ const SearchPatients = (props) => {
 
     return(
         <div className={styles.container}>
+            <div className={styles.logout}>
+               <input type="button" value='Logout' />
+            </div>
             <div className={styles.content}>
                 <div className={styles.title}>
                     <h2><span>Searching patients by personal code</span></h2>

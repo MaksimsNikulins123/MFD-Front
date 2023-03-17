@@ -12,7 +12,6 @@ const RESPONSE_FROM_API = "RESPONSE-FROM-API"
 
 
 let initialState = {
-    auth: true,
     request: false,
     response: false,
     searching: "",

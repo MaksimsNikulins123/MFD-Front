@@ -4,7 +4,8 @@ import AppContent from './AppContent'
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.search.auth,
+        isAuth: state.auth.isAuth,
+        loading: state.auth.loading
     }
     
 }

@@ -3,8 +3,11 @@ import { applyMiddleware, combineReducers, legacy_createStore as createStore} fr
 import formReducer from './form-reducer';
 import searchReducer from './search-reducer';
 import thunkMiddleware from 'redux-thunk';
+import authReducer from './auth-reducer';
+
 
 let reducers = combineReducers({
+    auth: authReducer,
     search: searchReducer,
     form: formReducer,
 });

@@ -2,7 +2,7 @@
 import styles from './AppContent.module.scss';
 import SearchPatientsContainer from './SearchPatiens/SearchPatientsContainer';
 import FormForNewPatientsContainer from './FormForNewPatiens/FormForNewPatientsContainer';
-import AutherizationContainer from './Autherization/AutherizationContainer';
+import Autherization from './Autherization/Autherization';
 
 const AppContent = (props) => {
 
@@ -11,15 +11,16 @@ const AppContent = (props) => {
             <div className={styles.content}>
                 <>
                     {
-                        props.auth
+                        props.isAuth
                         ?
                         <>
                             <SearchPatientsContainer />
                             <FormForNewPatientsContainer />
+                    
                         </>
                         :
 
-                        <AutherizationContainer />
+                        <Autherization />
 
                     }
                     
