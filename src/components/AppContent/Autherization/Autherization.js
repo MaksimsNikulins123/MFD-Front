@@ -1,5 +1,5 @@
 import styles from './Autherization.module.scss';
-import AuthForm from './AuthForm/AuthForm';
+import FormContainer from './Form/FormContainer';
 import AuthLogo from "./AuthLogo/AuthLogo"
 
 
@@ -15,7 +15,7 @@ const Autherization = () => {
                         <AuthLogo />
                     </div>
                     <div className={styles.form}>
-                        <AuthForm />
+                        <FormContainer />
                     </div>
                 </div>
                 <div className={styles.footer}>

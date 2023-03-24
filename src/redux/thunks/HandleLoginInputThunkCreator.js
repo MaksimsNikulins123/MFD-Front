@@ -1,5 +1,5 @@
 import { HandleLoginInputValueActionCreator, ToggleLoadingAnimationActionCreator } from "../auth-reducer";
-import { SetLoginDataThunkCreator } from "./SetLoginDataThunkCreator";
+import { CheckLoginDataThunkCreator } from "./CheckLoginDataThunkCreator";
 
 let timer = null;
 
@@ -9,20 +9,20 @@ const resetTimer = () => {
         )
     }
 
-export const HandleLoginInputThunkCreator = (login, email) => {
+export const HandleLoginInputThunkCreator = (email, password) => {
     resetTimer()
 
         return (dispatch) => {
          
-            dispatch(HandleLoginInputValueActionCreator(login, email))
+            dispatch(HandleLoginInputValueActionCreator(email, password))
             
-            if(login.length > 0 && email.length > 0) {
+            if(email.length > 0 && password.length > 0) {
 
             dispatch(ToggleLoadingAnimationActionCreator(true))
                 
             timer = setTimeout(() => {
                    
-                    dispatch(SetLoginDataThunkCreator(login, email));
+                    dispatch(CheckLoginDataThunkCreator(email, password));
                    
             }, 3000);   
         }

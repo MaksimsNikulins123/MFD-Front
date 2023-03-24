@@ -3,13 +3,16 @@
 const SET_USER_DATA = 'SET-USER-DATA';
 const HANDLE_LOGIN_INPUT_VALUE = 'HANDLE-LOGIN-INPUT-VALUE';
 const TOGGLE_LOADING_ANIMATION = 'TOGGLE-LOADING-ANIMATION';
+const TOGGLE_FORM = 'TOGGLE-FORM';
+const AUTHENTICATION_CUCCESSFUL = 'AUTHENTICATION-CUCCESSFUL';
 
 let initialState = {
-    userId: null,
+    userId: null,   
     email: null,
-    login: null,
+    password: null,
     isAuth: false,
     loading: false,
+    toggleForm: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -20,8 +23,14 @@ const authReducer = (state = initialState, action) => {
             stateCopy.login = action.login;
             stateCopy.email = action.email;
             return stateCopy;
+        case TOGGLE_FORM:
+            stateCopy.toggleForm = !stateCopy.toggleForm;
+            return stateCopy;
         case TOGGLE_LOADING_ANIMATION:
             stateCopy.loading = action.value;
+            return stateCopy;
+        case AUTHENTICATION_CUCCESSFUL:
+            stateCopy.isAuth = action.value;
             return stateCopy;
         case SET_USER_DATA:
            
@@ -33,17 +42,30 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const HandleLoginInputValueActionCreator = (login, email) => {
+export const HandleLoginInputValueActionCreator = (email, password) => {
     return {
         type: HANDLE_LOGIN_INPUT_VALUE,
-        login: login,
-        email: email
+        email: email,
+        password: password
     }
 }
 export const ToggleLoadingAnimationActionCreator = (value) => {
     return {
         type: TOGGLE_LOADING_ANIMATION,
         value: value
+    }
+}
+export const toggleFormActionCreator = () => {
+    return {
+        type: TOGGLE_FORM,
+        
+    }
+}
+export const AuthenticationSuccessActionCreator = (value) => {
+    return {
+        type: AUTHENTICATION_CUCCESSFUL,
+        value: value
+        
     }
 }
 

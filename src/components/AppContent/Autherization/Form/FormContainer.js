@@ -6,7 +6,7 @@ import Form from './Form'
 
 const mapStateToProps = (state) => {
     return {
-        registrationForm: state.auth.registrationForm
+        toggleForm: state.auth.toggleForm
     }
     
 }
