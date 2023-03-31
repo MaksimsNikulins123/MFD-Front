@@ -1,9 +1,10 @@
-import AppContentContainer from './components/AppContent/AppContentContainer';
+import VerificationAuthContainer from './components/VerificatonAuth/VerificationAuthContainer';
 
 function App() {
+
   return (
     <>
-      {<AppContentContainer />}
+      <VerificationAuthContainer />
     </>
   );
 }

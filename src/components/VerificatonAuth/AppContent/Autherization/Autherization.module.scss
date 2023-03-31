@@ -1,0 +1,55 @@
+@import "./../../../../styles/variables.module";
+
+.container {
+    background: #35d477;
+    border-radius: $borderRadius;
+    border: 1px solid #111111;
+//     color: #0d0363;
+//     padding: $componentPadding;
+}
+.title{
+    display: flex;
+    justify-content: center;
+//     // margin: 10px;
+//     padding: $componentPadding;
+}
+.content{
+    display: flex;
+    justify-content: space-around;
+    
+    height: 100%;
+    // margin: 10px;
+    // padding: $componentPadding;
+    @media (max-width: 700px) {
+        display: block;
+    }
+        
+    
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 50%;
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+}
+.logo{
+
+}
+.form {
+  
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    // width: 50%;
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+}

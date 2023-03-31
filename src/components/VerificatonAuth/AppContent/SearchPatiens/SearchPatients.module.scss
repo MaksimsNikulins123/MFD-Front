@@ -1,0 +1,18 @@
+@import "./../../../../styles/variables.module";
+
+.container {
+    background: #e2dddd;
+    border-radius: $borderRadius;
+    color: #0d0363;
+    padding: $componentPadding;
+    margin: 20px;
+}
+
+.content{
+    // padding: $componentPadding;
+    
+}
+.title{
+    padding: $componentPadding;
+    text-align: center;
+}

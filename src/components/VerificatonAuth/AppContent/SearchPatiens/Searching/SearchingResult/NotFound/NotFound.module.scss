@@ -1,0 +1,11 @@
+@import "./../../../../../../../styles/variables.module";
+
+.container {
+    background: #35d477;
+    border-radius: $borderRadius;
+    color: #0d0363;
+}
+.content{
+    text-align: center;
+    margin: 10px;
+}

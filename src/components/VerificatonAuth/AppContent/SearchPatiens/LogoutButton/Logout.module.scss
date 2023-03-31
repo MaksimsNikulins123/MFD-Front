@@ -1,0 +1,12 @@
+@import "./../../../../../styles/variables.module";
+
+.logout{
+    display: flex;
+    justify-content: flex-end;
+        input{
+            // border: 5px solid #867f83;
+            border-radius: 5px;
+            background-color: #e01373;
+            color: #ffffff;
+        }
+    }
